@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+    <title>Topics</title>
+</head>
+<body>
+    <h1>Topics</h1>
+    <form action="{{ url_for('create_topic') }}" method="post">
+        <input type="text" name="name" placeholder="Topic name"><br>
+        <input type="submit" value="Create Topic">
+    </form>
+    <ul>
+        {% for topic in topics %}
+        <li><a href="{{ url_for('view_topic', topic_id=topic[0]) }}">{{ topic[1] }}</a></li>
+        {% endfor %}
+    </ul>
+    <form action="{{ url_for('deregister') }}" method="post">
+        <input type="submit" value="Deregister">
+    </form>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
